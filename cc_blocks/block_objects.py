@@ -1,17 +1,22 @@
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import Optional
+from typing import List, Dict
 
-@dataclass(slots=True)
+
+@dataclass(slots=True, frozen=True)
 class BlockType:
     """A class representing a type of block in a session."""
+
     name: str
     duration: float
+    block_group: Optional[str] = None
     description: str = ""
 
 
-@dataclass(slots=True)
+@dataclass(slots=True, frozen=True)
 class BlockEvent:
     """A class representing an instance of a block in a session."""
+
     block_type: BlockType
     start_time: float
 
@@ -19,6 +24,7 @@ class BlockEvent:
 @dataclass(slots=True)
 class SessionBlocks:
     """A class representing a session composed of blocks."""
+
     session_name: str
     block_types: Dict[str, BlockType]
     block_events: List[BlockEvent]

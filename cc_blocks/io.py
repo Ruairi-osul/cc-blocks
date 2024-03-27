@@ -1,7 +1,8 @@
 import pickle
-from .block_objects import SessionBlocks
+from .block_collections import GroupedSessionBlocks
 
-def save(obj: SessionBlocks, filename: str) -> None:
+
+def save(obj: GroupedSessionBlocks, filename: str) -> None:
     """Save a SessionBlocks instance to disk.
 
     Parameters
@@ -15,7 +16,8 @@ def save(obj: SessionBlocks, filename: str) -> None:
         pickle.dump(obj, f)
     return None
 
-def load(filename: str) -> SessionBlocks:
+
+def load(filename: str) -> GroupedSessionBlocks:
     with open(filename, "rb") as f:
         obj = pickle.load(f)
     return obj
